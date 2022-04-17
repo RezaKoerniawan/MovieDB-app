@@ -1,15 +1,21 @@
 package com.example.moviedb.data.repository
 
 import com.example.moviedb.data.model.Movie
+import com.example.moviedb.data.remote.request.LoginRequest
 import com.example.moviedb.data.remote.response.GetCastAndCrewResponse
 import com.example.moviedb.data.remote.response.GetMovieListResponse
 import com.example.moviedb.data.remote.response.GetTvListResponse
+import com.example.moviedb.data.remote.response.LoginResponse
 
 interface UserRepository {
 
     suspend fun getMovieList(
         hashMap: HashMap<String, String> = HashMap()
     ): GetMovieListResponse
+
+    suspend fun getLoginUser(
+      loginRequest: LoginRequest
+    ): LoginResponse
 
     suspend fun getCastAndCrew(
         movieId: String

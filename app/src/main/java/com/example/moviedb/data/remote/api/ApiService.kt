@@ -2,13 +2,9 @@ package com.example.moviedb.data.remote
 
 import com.example.moviedb.data.model.Movie
 import com.example.moviedb.data.remote.api.ApiPath
-import com.example.moviedb.data.remote.response.GetCastAndCrewResponse
-import com.example.moviedb.data.remote.response.GetMovieImages
-import com.example.moviedb.data.remote.response.GetMovieListResponse
-import com.example.moviedb.data.remote.response.GetTvListResponse
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.QueryMap
+import com.example.moviedb.data.remote.request.LoginRequest
+import com.example.moviedb.data.remote.response.*
+import retrofit2.http.*
 
 interface ApiService {
     @GET(ApiPath.DISCOVER_MOVIE)

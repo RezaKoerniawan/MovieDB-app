@@ -107,6 +107,7 @@ android {
 
     applicationVariants.all {
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
+        buildConfigField("String", "BASE_URL_LOGIN", "\"https://6124ba6d300c540017873d1e.mockapi.io/api/v1/\"")
         buildConfigField("String", "SMALL_IMAGE_URL", "\"https://image.tmdb.org/t/p/w200\"")
         buildConfigField("String", "LARGE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\"")
         buildConfigField("String", "ORIGINAL_IMAGE_URL", "\"https://image.tmdb.org/t/p/original\"")

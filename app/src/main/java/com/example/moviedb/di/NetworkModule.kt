@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.AssetManager
 import com.example.moviedb.BuildConfig
 import com.example.moviedb.data.remote.ApiService
+import com.example.moviedb.data.remote.api.ApiLoginService
 import com.example.moviedb.data.remote.api.MockInterceptor
 import com.example.moviedb.enableLogging
 import com.facebook.stetho.okhttp3.StethoInterceptor
@@ -90,6 +91,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
+    @Named("Movie")
     fun provideAppRetrofit(
         okHttpClient: OkHttpClient,
         moshi: Moshi
@@ -102,6 +104,24 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): ApiService =
+    fun provideApiService(@Named("Movie")retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
+
+    @Singleton
+    @Provides
+    @Named("Login")
+    fun provideAppLoginRetrofit(
+        okHttpClient: OkHttpClient,
+        moshi: Moshi
+    ): Retrofit =
+        Retrofit.Builder()
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .baseUrl(BuildConfig.BASE_URL_LOGIN)
+            .client(okHttpClient)
+            .build()
+
+    @Singleton
+    @Provides
+    fun provideApiLoginService(@Named("Login")retrofit: Retrofit): ApiLoginService =
+        retrofit.create(ApiLoginService::class.java)
 }

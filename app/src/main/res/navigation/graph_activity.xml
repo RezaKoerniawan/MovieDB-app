@@ -3,31 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splash">
+    app:startDestination="@id/login">
 
     <fragment
-        android:id="@+id/splash"
+        android:id="@+id/login"
+        android:name="com.example.moviedb.ui.screen.login.LoginUserFragment"
+        tools:layout="@layout/fragment_login_user">
+    <action
+        android:id="@+id/toMain"
+        app:destination="@id/main"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/main"
         android:name="com.example.moviedb.ui.screen.oldmain.OldMainFragment"
-        tools:layout="@layout/fragment_splash">
+        tools:layout="@layout/fragment_old_main">
         <action
             android:id="@+id/toMovieListPager"
             app:destination="@id/movie_list_pager"
-            app:popUpTo="@id/splash"
+            app:popUpTo="@id/main"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/toMoviePager"
             app:destination="@id/movie_pager"
-            app:popUpTo="@id/splash"
+            app:popUpTo="@id/main"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/toPagingMovie"
             app:destination="@id/pagingMovie"
-            app:popUpTo="@id/splash"
+            app:popUpTo="@id/main"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/toPopularMovie"
             app:destination="@id/popularMovie"
-            app:popUpTo="@id/splash"
+            app:popUpTo="@id/main"
             app:popUpToInclusive="true" />
     </fragment>
 
